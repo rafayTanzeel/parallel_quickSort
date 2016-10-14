@@ -54,24 +54,26 @@ void driver()
     }
     assert(answer == accumulator);
     
-    std::cout << "trial: " << trial << ", ";
-    std::cout << "user: " << ppp::getuser() << ", ";
-    std::cout << "host: " << ppp::gethost() << ", ";
-    std::cout << "threads: " << num_threads << ", ";
-    std::cout << "particles: " << num_particles << ", ";
-    std::cout << "grainsize: " << grainsize << ", ";
-    std::cout << "seconds: " << seconds << "\n";
+    //std::cout << "trial: " << trial << ", ";
+    //std::cout << "user: " << ppp::getuser() << ", ";
+    //std::cout << "host: " << ppp::gethost() << ", ";
+    //std::cout << "threads: " << num_threads << ", ";
+    //std::cout << "particles: " << num_particles << ", ";
+    //std::cout << "grainsize: " << grainsize << ", ";
+    //std::cout << "seconds: " << seconds << "\n";
     
     elapsed_time += seconds;
   }
   
-  std::cout << "average:  ";
-  std::cout << "user: " << ppp::getuser() << ", ";
-  std::cout << "host: " << ppp::gethost() << ", ";
-  std::cout << "threads: " << num_threads << ", ";
-  std::cout << "particles: " << num_particles << ", ";
-  std::cout << "grainsize: " << grainsize << ", ";
-  std::cout << "seconds: " << elapsed_time/double(num_trials) << "\n";
+  //std::cout << "average:  ";
+  //std::cout << "user: " << ppp::getuser() << ", ";
+  //std::cout << "host: " << ppp::gethost() << ", ";
+  //std::cout << "threads: " << num_threads << ", ";
+  //std::cout << "particles: " << num_particles << ", ";
+  //std::cout << "grainsize: " << grainsize << ", ";
+  //std::cout << "seconds: " << elapsed_time/double(num_trials) << "\n";
+  std::cout << grainsize<<','<< elapsed_time/double(num_trials) << "\n";
+
 }
 
 static struct option long_options[] =
