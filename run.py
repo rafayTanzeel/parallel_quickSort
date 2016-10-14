@@ -6,7 +6,7 @@ import os
 def main():
     fileName = ["driver-sort", "driver-compute", "driver-reduce"]
     grainSize=linspace(100, 40000000, 20)
-    threading={"singleThread.txt":1, "quadThread.txt":4}
+    threading={"quadThreadSep.txt":4}
     for key, value in threading.iteritems():
         for f in fileName:
             os.remove(f+'-'+key) if os.path.exists(f+'-'+key) else None
