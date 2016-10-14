@@ -188,7 +188,7 @@ void driver()  // Called for each thread
   //std::cout << "grainsize: " << grainsize << ", ";
   //std::cout << "sort_seconds: " << sort_elapsed_time/double(num_trials) << ", ";
   //std::cout << "compute_seconds: " << compute_elapsed_time/double(num_trials) << "\n";
-  std::cout << grainsize<<','<< elapsed_time/double(num_trials) << "\n";
+  std::cout << grainsize<<','<< compute_elapsed_time/double(num_trials) << "\n";
 
 }
 
