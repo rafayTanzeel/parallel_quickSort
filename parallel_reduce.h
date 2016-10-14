@@ -79,7 +79,7 @@ namespace ppp {
   {
     // ASSIGNMENT: make this parallel via recursive divide and conquer
 
-	T* sum_array = new T[get_thread_count()](0);
+	T* sum_array = new T[get_thread_count()]();
 
 
     if (grainsize == 0) {
