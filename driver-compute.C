@@ -167,27 +167,28 @@ void driver()  // Called for each thread
       }
     }
     
-    std::cout << "trial: " << trial << ", ";
-    std::cout << "user: " << ppp::getuser() << ", ";
-    std::cout << "host: " << ppp::gethost() << ", ";
-    std::cout << "threads: " << num_threads << ", ";
-    std::cout << "particles: " << num_particles << ", ";
-    std::cout << "grainsize: " << grainsize << ", ";
-    std::cout << "sort_seconds: " << sort_seconds << ", ";
-    std::cout << "compute_seconds: " << compute_seconds << "\n";
+    //std::cout << "trial: " << trial << ", ";
+    //std::cout << "user: " << ppp::getuser() << ", ";
+    //std::cout << "host: " << ppp::gethost() << ", ";
+    //std::cout << "threads: " << num_threads << ", ";
+    //std::cout << "particles: " << num_particles << ", ";
+    //std::cout << "grainsize: " << grainsize << ", ";
+    //std::cout << "sort_seconds: " << sort_seconds << ", ";
+    //std::cout << "compute_seconds: " << compute_seconds << "\n";
     
     sort_elapsed_time += sort_seconds;
     compute_elapsed_time += compute_seconds;
   }
   
-  std::cout << "average:  ";
-  std::cout << "user: " << ppp::getuser() << ", ";
-  std::cout << "host: " << ppp::gethost() << ", ";
-  std::cout << "threads: " << num_threads << ", ";
-  std::cout << "particles: " << num_particles << ", ";
-  std::cout << "grainsize: " << grainsize << ", ";
-  std::cout << "sort_seconds: " << sort_elapsed_time/double(num_trials) << ", ";
-  std::cout << "compute_seconds: " << compute_elapsed_time/double(num_trials) << "\n";
+  //std::cout << "average:  ";
+  //std::cout << "user: " << ppp::getuser() << ", ";
+  //std::cout << "host: " << ppp::gethost() << ", ";
+  //std::cout << "threads: " << num_threads << ", ";
+  //std::cout << "particles: " << num_particles << ", ";
+  //std::cout << "grainsize: " << grainsize << ", ";
+  //std::cout << "sort_seconds: " << sort_elapsed_time/double(num_trials) << ", ";
+  //std::cout << "compute_seconds: " << compute_elapsed_time/double(num_trials) << "\n";
+  std::cout << grainsize << ',' << compute_elapsed_time/double(num_trials) << "\n";
 }
 
 static struct option long_options[] =
