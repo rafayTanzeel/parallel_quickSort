@@ -6,7 +6,6 @@
 #include "ppp.h"
 #include "TaskGroup.h"
 
-int taskSpawned=0;
 
 namespace ppp {
 
@@ -21,8 +20,7 @@ namespace ppp {
   void TaskGroup::spawn(Task& t) {
     assert(g_queues_ptr != NULL);
     //std::cout<<taskSpawned%get_thread_count()<<std::endl;
-    TaskQueue& queue = g_queues_ptr[taskSpawned%get_thread_count()];  // ASSIGNMENT: use per-thread task queue with "get_thread_id()"
-    taskSpawned++;
+    TaskQueue& queue = g_queues_ptr[get_thread_id()];  // ASSIGNMENT: use per-thread task queue with "get_thread_id()"
     m_wait_counter.fetch_and_inc();
     t.setCounter(&m_wait_counter);
     queue.enqueue(&t);
@@ -35,6 +33,8 @@ namespace ppp {
     while (counter->get() != 0) {
       PPP_DEBUG_EXPR(queue.size());
 
+      Task* task = NULL;
+
       if(queue.size()==0){
     	  int highestQIndex=0;
     	  int max=0;
@@ -44,15 +44,13 @@ namespace ppp {
     			  highestQIndex=i;
     		  }
     	  }
-    	  if(highestQIndex!=get_thread_id()){
-			  for(int i=0; i<((g_queues_ptr[highestQIndex]).size())/2; i++){
-				  queue.enqueue((g_queues_ptr[highestQIndex]).steal());
-			  }
+    	  if(highestQIndex!=get_thread_id() && max>0){
+		  task = (g_queues_ptr[highestQIndex]).steal();
     	  }
       }
-       
-      // Dequeue from local queue
-      Task* task = queue.dequeue();
+      else{
+	task = queue.dequeue();
+      }
 
       // ASSIGNMENT: add task stealing
 
