@@ -5,7 +5,7 @@
 
 #include "ppp.h"
 #include "TaskGroup.h"
-
+#include <vector>
 
 namespace ppp {
 
@@ -36,16 +36,14 @@ namespace ppp {
       Task* task = NULL;
 
       if(queue.size()==0){
-    	  int highestQIndex=0;
-    	  int max=0;
+	  std::vector<int> availableQueues;
     	  for(int i=0; i<get_thread_count(); i++){
-    		  if(i!=get_thread_id() && (g_queues_ptr[i]).size()>max){
-    			  max=(g_queues_ptr[i]).size();
-    			  highestQIndex=i;
+    		  if(i!=get_thread_id() && (g_queues_ptr[i]).size()>0){
+			  availableQueues.push_back(i);
     		  }
     	  }
-    	  if(highestQIndex!=get_thread_id() && max>0){
-		  task = (g_queues_ptr[highestQIndex]).steal();
+    	  if(availableQueues.size()>0){
+		  task = (g_queues_ptr[availableQueues[rand() % availableQueues.size()]]).steal();
     	  }
       }
       else{
